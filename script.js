@@ -1,82 +1,3 @@
-// const getMeal = document.querySelector(".main__button");
-// const mealContainer = document.querySelector(".recipe__wrap");
-
-// getMeal.addEventListener("click", () => {
-//   fetch("https://www.themealdb.com/api/json/v1/1/random.php")
-//     .then((res) => res.json())
-//     .then((res) => {
-//       createMeal(res.meals[0]);
-//     });
-// });
-
-// function createMeal(meal) {
-//   mealContainer.innerHTML = `
-//     <div class="recipe__in-block">
-//         <div class="recipe__dish-name">${meal.strMeal}</div>
-//            <img class="recipe__img" src="${meal.strMealThumb}" alt="dish image" />  
-//               <div class="recipe__description">
-//                 <div class="recipe__country-category">
-//                   <p class="recipe__country">${meal.strArea}</p>
-//                   <p class="recipe__category">${meal.strCategory}</p>
-//                 </div>
-//                 <div class="recipe__all-ingredients">
-//                     <p class="recipe__text-ingredients">Ingredients: </p>
-//                   <div class="ingredients">
-//                     <p class="food-item">${meal.strIngredient1} </p>
-//                     <p class="food-item">${meal.strIngredient2} </p>
-//                     <p class="food-item">${meal.strIngredient3} </p>
-//                     <p class="food-item">${meal.strIngredient4} </p> 
-//                     <p class="food-item">${meal.strIngredient5} </p>
-//                   </div>
-//                   <div class="textMore">
-//                     <p class="food">${meal.strIngredient6} </p>
-//                     <p class="food">${meal.strIngredient7} </p>
-//                     <p class="food">${meal.strIngredient8} </p>
-//                     <p class="food">${meal.strIngredient9} </p>
-//                     <p class="food">${meal.strIngredient10} </p>
-//                     <p class="food">${meal.strIngredient11} </p>
-//                     <p class="food">${meal.strIngredient12} </p>
-//                     <p class="food">${meal.strIngredient13} </p>
-//                   </div>
-//                     <button class="showBtn">more ingredients</button>
-//                </div>                    
-//             </div>
-//         <div class="content">
-//           <p class="how-to-cook"><b>How to cook:</b> ${meal.strInstructions}</p>
-//         </div>
-//     </div>
-//     `;
-
-//   /* More ingredients */
-
-//   const textMore = document.querySelector(".textMore");
-//   const showBtn = document.querySelector(".showBtn");
-
-//   showBtn.addEventListener("click", () => {
-//     textMore.classList.toggle("toggle");
-//     if (showBtn.innerHTML === "less ingredients") {
-//       showBtn.innerHTML = "more ingredients";
-//       showBtn.style.backgroundColor = "rgb(151, 186, 62)";
-//       showBtn.style.color = "rgb(18, 117, 26)";
-//     } else {
-//       showBtn.innerHTML = "less ingredients";
-//       showBtn.style.backgroundColor = "rgb(18, 117, 26)";
-//       showBtn.style.color = "rgb(151, 186, 62)";
-//     }
-//   });
-
-//   /* Read more */
-//   let more = document.querySelectorAll("more");
-//   for (let i = 0; i < more.length; i++) {
-//     more[i].addEventListener("click", function () {
-//       more[i].parentNode.classList.toggle("active");
-//     });
-//   }
-// }
-
-
-
-
 const getMeal = document.querySelector(".main__button");
 const mealContainer = document.querySelector(".recipe__wrap");
 
@@ -89,8 +10,8 @@ getMeal.addEventListener("click", () => {
 });
 
 function createMeal(meal) {
-  let ingredientsHTML = '';
-  let additionalIngredientsHTML = '';
+  let ingredientsHTML = "";
+  let additionalIngredientsHTML = "";
   for (let i = 1; i <= 13; i++) {
     const ingredient = meal[`strIngredient${i}`];
     if (ingredient) {
@@ -117,7 +38,7 @@ function createMeal(meal) {
           <p class="recipe__text-ingredients">ingredients</p>
             <div class="recipe__first-ingredients">${ingredientsHTML}</div>
             <div class="textMore" style="display: none;">${additionalIngredientsHTML}</div>
-            ${ingredientsHTML.length > 5 ? showMoreButton : ''}
+            ${ingredientsHTML.length > 5 ? showMoreButton : ""}
           </div>
         </div>
         <div class="content">
@@ -127,62 +48,17 @@ function createMeal(meal) {
     `;
 
   if (ingredientsHTML.length > 5) {
-    const ingredientsContainer = mealContainer.querySelector('.ingredients');
-    const textMoreContainer = mealContainer.querySelector('.textMore');
-    const showMoreBtn = mealContainer.querySelector('.showBtn');
+    const ingredientsContainer = mealContainer.querySelector(".ingredients");
+    const textMoreContainer = mealContainer.querySelector(".textMore");
+    const showMoreBtn = mealContainer.querySelector(".showBtn");
 
-    showMoreBtn.addEventListener('click', () => {
-      textMoreContainer.style.display = textMoreContainer.style.display === 'none' ? 'block' : 'none';
-      showMoreBtn.innerText = textMoreContainer.style.display === 'none' ? 'more ingredients' : 'less ingredients';
+    showMoreBtn.addEventListener("click", () => {
+      textMoreContainer.style.display =
+        textMoreContainer.style.display === "none" ? "block" : "none";
+      showMoreBtn.innerText =
+        textMoreContainer.style.display === "none"
+          ? "more ingredients"
+          : "less ingredients";
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-  // /* More ingredients */
-
-  // const textMore = document.querySelector(".textMore");
-  // const showBtn = document.querySelector(".showBtn");
-
-  // showBtn.addEventListener("click", () => {
-  //   textMore.classList.toggle("toggle");
-  //   if (showBtn.innerHTML === "less ingredients") {
-  //     showBtn.innerHTML = "more ingredients";
-  //     showBtn.style.backgroundColor = "rgb(151, 186, 62)";
-  //     showBtn.style.color = "rgb(18, 117, 26)";
-  //   } else {
-  //     showBtn.innerHTML = "less ingredients";
-  //     showBtn.style.backgroundColor = "rgb(18, 117, 26)";
-  //     showBtn.style.color = "rgb(151, 186, 62)";
-  //   }
-  // });
-
-  // /* Read more */
-  // let more = document.querySelectorAll("more");
-  // for (let i = 0; i < more.length; i++) {
-  //   more[i].addEventListener("click", function () {
-  //     more[i].parentNode.classList.toggle("active");
-  //   });
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
